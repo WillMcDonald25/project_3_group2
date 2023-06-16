@@ -4,7 +4,7 @@ import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, MetaData
-from flask import Flask, jsonify
+from flask import Flask, render_template, jsonify
 
 # Setting up the DB
 engine = create_engine(r"sqlite:///Data/ILINet.db")
@@ -26,6 +26,10 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
+    return render_template('index.html')
+
+@app.route("/API")
+def api():
     "Presents the JSON file"
     
     # Create the session link
