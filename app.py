@@ -28,7 +28,7 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-@app.route("/API")
+@app.route("/api")
 def api():
     "Presents the JSON file"
     
@@ -59,4 +59,4 @@ def api():
     return jsonify(data)
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)
