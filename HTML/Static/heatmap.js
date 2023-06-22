@@ -8,7 +8,7 @@
 //       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 //   }).addTo(myMap);
   
-  var url = "http://127.0.0.1:5000/API";
+  var url = "http://nonkik589.pythonanywhere.com/";
   
   var stateCoord="https://gist.githubusercontent.com/meiqimichelle/7727723/raw/0109432d22f28fd1a669a3fd113e41c4193dbb5d/USstates_avg_latLong";
 
