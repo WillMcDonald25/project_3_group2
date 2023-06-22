@@ -5,6 +5,7 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, MetaData
 from flask import Flask, render_template, jsonify
+from flask_cors import CORS, cross_origin
 
 # Setting up the DB
 engine = create_engine(r"sqlite:///Data/ILINet.db")
@@ -18,7 +19,7 @@ ILINet = Base.classes.ilinet
 
 # Flask setup
 app = Flask(__name__)
-
+cors = CORS(app)
 
 ################
 # Flask routes
@@ -29,6 +30,7 @@ def home():
     return render_template('index.html')
 
 @app.route("/api")
+@cross_origin()
 def api():
     "Presents the JSON file"
     
@@ -59,4 +61,4 @@ def api():
     return jsonify(data)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=8000)
