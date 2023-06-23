@@ -1,6 +1,6 @@
 var myMap = L.map("mapKW", {
   center: [37.09, -120.71],
-  zoom: 13
+  zoom: 3
   });
   
   // Adding the tile layer
@@ -16,7 +16,7 @@ var myMap = L.map("mapKW", {
 var states=[];
 
   d3.json(stateCoord).then(function(data) {
-    console.log(data,"State Coordinates");
+    
 
     
     for (var k = 0; k < data.length; k++){
@@ -26,13 +26,13 @@ var states=[];
           
     }
   };
-  console.log(states,"States");
+  
 });
 
 
   d3.json(url).then(function(response) {
   
-    console.log(response);
+    console.log(response,"RESPONSE");
     
     var heatArray = [];
   
@@ -46,11 +46,12 @@ var states=[];
     
         };};
   
-    console.log(heatArray,"Heat Array"); 
+    
       
     var heat = L.heatLayer(heatArray, {
-      radius: 20,
+      radius: 100,
       blur: 35
     }).addTo(myMap);
-  
+    
   });
+
