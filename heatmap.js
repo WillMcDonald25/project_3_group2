@@ -1,7 +1,7 @@
-// var myMap = L.map("mapKW", {
-//     center: [37.7749, -122.4194],
-//     zoom: 4
-//   });
+var myMap = L.map("mapKW", {
+  center: [37.09, -120.71],
+  zoom: 4
+  });
   
 //   // Adding the tile layer
 //   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
