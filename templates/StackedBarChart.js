@@ -5,13 +5,12 @@ getData();
       console.log(data);
       const length = data.length;
       console.log(length);
-      const year = data.Year;
-      console.log(year)
+      console.log(data.Year)
       data2013 = [];
       data2014 = [];
       data2015 = [];
       data2016 = [];
-      for (j = 0; j < year; j++) {
+      for (j = 0; j < length; j++) {
          if (data.Year == 2013) {
             data2013.push(data[j].Number_of_Patients)
          }
@@ -33,11 +32,11 @@ getData();
       new Chart(document.getElementById("myChart"), {
          type: 'bar',
          data: {
-            labels: [2013,2014,2015,2016],
+            labels: [data2013.Year, data2014.Year, data2015.Year, data2016.Year],
             datasets: [
                {
                label: "Number of Infected Patients",
-               data: data2013,data2014,data2015,data2016,
+               data: [data2013.Number_of_Patients, data2014.Number_of_Patients, data2015.Number_of_Patients, data2016.Number_of_Patients],
                backgroundColor: "red",
                width: 800,
                height: 600
