@@ -1,47 +1,66 @@
 getData();
    async function getData() {
-      const response = await fetch('http://127.0.0.1:5000/api');
+      const response = await fetch('http://nonkik589.pythonanywhere.com/');
       const data = await response.json();
       console.log(data);
-      length = data.data.length;
+      const length = data.length;
       console.log(length);
-      labels = [];
+      console.log(data.Year)
+      data2013 = [];
+      data2014 = [];
+      data2015 = [];
+      data2016 = [];
+      for (j = 0; j < length; j++) {
+         if (data.Year == 2013) {
+            data2013.push(data[j].Number_of_Patients)
+         }
+         else if (data.Year == 2014) {
+            data2014.push(data[j].Number_of_Patients)
+         }
+         else if (data.Year == 2015) {
+            data2015.push(data[j].Number_of_Patients)
+         }
+         else if (data.Year == 2016) {
+            data2016.push(data[j].Number_of_Patients)
+         }
+      };
+
       values = [];
       for (i = 0; i < length; i++) {
-         labels.push(data.data[i].Year);
-         values.push(data.data[i].Number_of_Patients);
+         values.push(data[i].Number_of_Patients);
       }
       new Chart(document.getElementById("myChart"), {
          type: 'bar',
          data: {
-            labels: labels,
+            labels: [data2013.Year, data2014.Year, data2015.Year, data2016.Year],
             datasets: [
                {
-                  label: "Number of Infected Patients",
-                  backgroundColor: ["#3a90cd",
-                     "#8e5ea2",
-                     "#3bba9f",
-                     "#e8c3b9",
-                     "#c45850",
-                     "#CD9C5C",
-                     "#40E0D0"],
-                  data: values,
-                  width: 800,
-                  height: 600
+               label: "Number of Infected Patients",
+               data: [data2013.Number_of_Patients, data2014.Number_of_Patients, data2015.Number_of_Patients, data2016.Number_of_Patients],
+               backgroundColor: "red",
+               width: 800,
+               height: 600
                }
             ]
          },
          options: {
-            legend: { display: false },
+            legend: { display: true },
             title: {
                display: true,
-               text: 'U.S population'
+               text: 'Influenza Cases'
             }
-         }
-      })};
-
-      <div>
-            <canvas id="myChart"></canvas>
-          </div>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script type="text/javascript" src="StackedBarChart.js"></script>
+         },
+         scales: {
+            xAxes: [{
+              stacked: true,
+              gridLines: {
+                display: false,
+              }
+            }],
+            yAxes: [{
+              stacked: true,
+              ticks: {
+                beginAtZero: false,
+              },
+      }]},
+})};

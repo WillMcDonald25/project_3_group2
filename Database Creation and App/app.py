@@ -54,4 +54,8 @@ def home():
     return jsonify(data)
 
 if __name__ == '__main__':
+<<<<<<< HEAD:app.py
+    app.run(debug=False, host='0.0.0.0', port=8000)
+=======
     app.run(debug=False)
+>>>>>>> main:Database Creation and App/app.py
