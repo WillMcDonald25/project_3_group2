@@ -1,6 +1,6 @@
 var myMap = L.map("mapKW", {
   center: [37.09, -120.71],
-  zoom: 3
+  zoom: 4
   });
   
   // Adding the tile layer
