@@ -1,66 +1,84 @@
 getData();
+   newLabels = []; patientData = []; providerData = [];
    async function getData() {
-      const response = await fetch('http://nonkik589.pythonanywhere.com/');
+      const newurl = 'http://nonkik589.pythonanywhere.com/';
+      const response = await fetch(newurl);
       const data = await response.json();
       console.log(data);
       const length = data.length;
       console.log(length);
-      console.log(data.Year)
-      data2013 = [];
-      data2014 = [];
-      data2015 = [];
-      data2016 = [];
-      for (j = 0; j < length; j++) {
-         if (data.Year == 2013) {
-            data2013.push(data[j].Number_of_Patients)
-         }
-         else if (data.Year == 2014) {
-            data2014.push(data[j].Number_of_Patients)
-         }
-         else if (data.Year == 2015) {
-            data2015.push(data[j].Number_of_Patients)
-         }
-         else if (data.Year == 2016) {
-            data2016.push(data[j].Number_of_Patients)
-         }
-      };
+      const year = data.map( (x) => x.Year[0])
+      const patient = data.map( (x) => x.Number_of_Patients)
+      const provider = data.map( (x) => x.Number_of_Providers[0])
+      console.log("Year", year,"patient", patient,"provider", provider);
+      newLabels = year;
+      patientData = patient;
+      providerData = provider;
+      
+      
+      patientdata2013 = 0;
+      patientdata2014 = 0;
+      patientdata2015 = 0;
+      patientdata2016 = 0;
 
-      values = [];
-      for (i = 0; i < length; i++) {
-         values.push(data[i].Number_of_Patients);
-      }
+      providerdata2013 = 0;
+      providerdata2014 = 0;
+      providerdata2015 = 0;
+      providerdata2016 = 0;
+      
+      
+      for (j = 0; j < length; j++) {
+         if (year[j] === 2013 && patientData[j]!="X") {
+            patientdata2013 += parseInt(patientData[j]);
+         }
+         else if (year[j] === 2014 && patientData[j]!="X") {
+            patientdata2014 += parseInt(patientData[j]);
+         }
+         else if (year[j] === 2015 && patientData[j]!="X") {
+            patientdata2015 += parseInt(patientData[j]);
+         }
+         else { if (patientData[j]!="X"){
+            patientdata2016 += parseInt(patientData[j]);}}
+
+            if (year[j] === 2013 && providerData[j]!="X") {
+               providerdata2013 += parseInt(providerData[j]);
+            }
+            else if (year[j] === 2014 && providerData[j]!="X") {
+               providerdata2014 += parseInt(providerData[j]);
+            }
+            else if (year[j] === 2015 && providerData[j]!="X") {
+               providerdata2015 += parseInt(providerData[j]);
+            }
+            else { if (patientData[j]!="X"){
+               providerdata2016 += parseInt(providerData[j]);}}
+      };
+      totalData = [];
+      totalData.push(patientdata2013, patientdata2014, patientdata2015, patientdata2016);
+      console.log("Total Data", totalData);
+      console.log("2013", patientdata2013);
+      
       new Chart(document.getElementById("myChart"), {
          type: 'bar',
          data: {
-            labels: [data2013.Year, data2014.Year, data2015.Year, data2016.Year],
+            labels: [2013, 2014, 2015, 2016],
             datasets: [
                {
-               label: "Number of Infected Patients",
-               data: [data2013.Number_of_Patients, data2014.Number_of_Patients, data2015.Number_of_Patients, data2016.Number_of_Patients],
-               backgroundColor: "red",
-               width: 800,
-               height: 600
-               }
+               label: "Number of Infected Patients per Year",
+               data: [patientdata2013, patientdata2014, patientdata2015, patientdata2016],
+               backgroundColor: "red"
+               },
+               {
+                  label: "Number of Providers per Year",
+                  data: [providerdata2013, providerdata2014, providerdata2015, providerdata2016],
+                  backgroundColor: "blue"
+                  }
             ]
          },
          options: {
+            mode: indexedDB,
             legend: { display: true },
-            title: {
-               display: true,
-               text: 'Influenza Cases'
-            }
+            title: "Bar Chart"
          },
-         scales: {
-            xAxes: [{
-              stacked: true,
-              gridLines: {
-                display: false,
-              }
-            }],
-            yAxes: [{
-              stacked: true,
-              ticks: {
-                beginAtZero: false,
-              },
-      }]},
+        
 })};
+
