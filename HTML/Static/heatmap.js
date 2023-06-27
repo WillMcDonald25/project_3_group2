@@ -1,5 +1,5 @@
 var myMap = L.map("mapKW", {
-  center: [37.09, -120.71],
+  center: [38.09, -105.71],
   zoom: 4
   });
   
