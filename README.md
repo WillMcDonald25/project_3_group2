@@ -1,6 +1,7 @@
 # project_3_group2
  The API is hosted at the link below, but the code has been left in the 'Database Creation and App' 
     - http://nonkik589.pythonanywhere.com/
+    - Presentation slides: https://docs.google.com/presentation/d/1zhhvzZ2y3X4peVIj6sAKQZdVqKcPB0Nq6g_jso0zfL4/edit?usp=sharing
 
 
 ## Data and Delivery 
