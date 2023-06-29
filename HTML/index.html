@@ -18,44 +18,68 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- Chart.js Library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-       
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        #mapKW {
+            width: 900px;
+            height: 400px;
+        }
+        #line-plot {
+            height: 300px;
+        }
+        #myChart {
+            height: 400px;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
     <div class="row">
         <div class="col-md-12 jumbotron text-center">
-          <h1>Influenza like Illness Dashboard</h1>
-          <p>Use the interactive charts below to explore the dataset</p>
-          <p>Use the following link to access JSON formatted data: http://nonkik589.pythonanywhere.com/</p>
+            <h1>Influenza-like Illness Dashboard</h1>
+            <p>Use the interactive charts below to explore the dataset</p>
+            <p>Use the following link to access JSON formatted data: <a href="http://nonkik589.pythonanywhere.com/" target="_blank">http://nonkik589.pythonanywhere.com/</a></p>
         </div>
     </div>
     <div class="row">
-        <div class = "col-md-12">
-            <div id ="mapKW">
-                <style>
-                    #mapKW {
-                      width: 900px;
-                      height: 400px;
-                    }
-                  </style>  
-            </div> 
+        <div class="col-md-12">
+            <h2>Map</h2>
+            <div id="mapKW"></div> 
         </div>     
     </div>
     <div class="row">
         <div class="col-md-12">
+            <h2>Line Plot</h2>
             <div id="line-plot"></div>
-                <select id="selDataset">
-                    <option value="all">All Years</option>
-                    <option value="2013 data">2013 data</option>
-                    <option value="2014 data">2014 data</option>
-                    <option value="2015 data">2015 data</option>
-                    <option value="2016 data">2016 data</option>
-                </select>
+            <select id="selDataset">
+                <option value="all">All Years</option>
+                <option value="2013 data">2013 data</option>
+                <option value="2014 data">2014 data</option>
+                <option value="2015 data">2015 data</option>
+                <option value="2016 data">2016 data</option>
+            </select>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-12">
+            <h2>Stacked Bar Chart</h2>
             <canvas id="myChart"></canvas>
         </div>
     </div>
@@ -67,4 +91,3 @@
 <script type="text/javascript" src="Static/heatmap.js"></script>
 </body>
 </html>
-
